@@ -946,9 +946,10 @@ with right:
         ytitle = "Per day"
     fig.add_vline(x=metrics["peak_date"], line=dict(color="grey", dash="dash"))
     fig.update_layout(
-        title=title, xaxis_title="Date", yaxis_title=ytitle,
-        height=420, margin=dict(l=10, r=10, t=50, b=10),
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0))
+        title=title, xaxis_title=None, yaxis_title=ytitle,
+        height=440, margin=dict(l=10, r=10, t=54, b=64),
+        legend=dict(orientation="h", yanchor="top", y=-0.14,
+                    x=0.5, xanchor="center"))
     style_plot(fig)
     st.plotly_chart(fig, width='stretch')
 
@@ -975,20 +976,19 @@ with right:
         ffig.add_trace(go.Scatter(
             x=df["date"], y=[p_true * 100] * len(df), mode="lines",
             line=dict(color=INK, dash="dash", width=1.6),
-            name=f"True lethality p = {p_true * 100:.0f}%"))
+            name=f"True p = {p_true * 100:.0f}%"))
         ffig.add_trace(go.Scatter(
             x=df["date"], y=df["resolved_cfr"] * 100, mode="lines",
-            line=dict(color=NAVY, width=2.4),
-            name="Resolved CFR — deaths ÷ (deaths + recoveries)"))
+            line=dict(color=NAVY, width=2.4), name="Resolved CFR"))
         ffig.add_trace(go.Scatter(
             x=df["date"], y=df["naive_cfr"] * 100, mode="lines",
-            line=dict(color=ACCENT, width=2.4),
-            name="Naive CFR — deaths ÷ cases"))
+            line=dict(color=ACCENT, width=2.4), name="Naive CFR (observed)"))
         ffig.update_layout(
             title="Observed case-fatality ratio over time vs the true value",
-            xaxis_title="Date", yaxis_title="Case-fatality ratio (%)",
-            height=440, margin=dict(l=10, r=10, t=50, b=10),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0))
+            xaxis_title=None, yaxis_title="Case-fatality ratio (%)",
+            height=460, margin=dict(l=10, r=10, t=54, b=60),
+            legend=dict(orientation="h", yanchor="top", y=-0.14,
+                        x=0.5, xanchor="center"))
         style_plot(ffig)
         st.plotly_chart(ffig, width='stretch')
         st.caption("Naive CFR underestimates true lethality mid-epidemic due to "
