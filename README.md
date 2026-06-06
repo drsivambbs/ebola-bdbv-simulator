@@ -1,5 +1,7 @@
 # Ebola (Bundibugyo virus) Outbreak Simulator — Ituri Province, 2026
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ebola-bdbv-simulator.streamlit.app)
+
 An interactive **Streamlit** decision-support tool that simulates an Ebola disease
 outbreak caused by **Bundibugyo virus (BDBV)** in Ituri Province, Democratic Republic
 of the Congo. It wraps a compartmental (SEIR-type) transmission model behind public-
@@ -39,6 +41,23 @@ recovery) is decided **at entry** via the case-fatality probability `p`; each br
 then drains on its own clock. Transmission rates are auto-calibrated to a target R₀ by
 the next-generation method. Full equations, parameter values, ranges and literature
 sources are in [`model.md`](model.md).
+
+## Run it in your browser (one click)
+
+Once deployed, click the **Open in Streamlit** badge above to launch the app — no
+install required.
+
+**First-time deploy (free, ~1 minute):**
+
+1. Open the prefilled deploy link:
+   <https://share.streamlit.io/deploy?repository=drsivambbs/ebola-bdbv-simulator&branch=main&mainModule=app.py>
+2. Sign in to Streamlit Community Cloud with the GitHub account that owns this repo.
+3. The form is pre-filled (repo `drsivambbs/ebola-bdbv-simulator`, branch `main`,
+   file `app.py`). Under **Advanced settings → Custom subdomain**, set it to
+   `ebola-bdbv-simulator` so the badge above resolves to
+   `https://ebola-bdbv-simulator.streamlit.app`.
+4. Click **Deploy**. Streamlit installs `requirements.txt` and serves the app on a
+   public URL. Every push to `main` redeploys automatically.
 
 ## Run locally
 
